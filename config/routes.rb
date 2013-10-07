@@ -1,4 +1,6 @@
 Armory::Application.routes.draw do
+   resources :equipment
+
    get "test/datatables" => "test#datatables"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
