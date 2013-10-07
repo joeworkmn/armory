@@ -5,11 +5,16 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
+# After install: rails g foundation:install
 gem 'zurb-foundation'
+# After install: rails g cancan:ability
 gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
+# After install: rails g devise:install 
+# rails g devise ModelName when ready to create model (look at github page)
 gem 'devise'
 gem 'faker', '1.1.2'
+# After install: rails g figaro:install
 gem 'figaro'
 gem 'gon'
 gem 'haml'
@@ -22,6 +27,7 @@ gem 'pg'
 gem 'polyamorous'
 gem 'ransack', git: "git://github.com/ernie/ransack", branch: 'rails-4'
 gem 'sass-rails', '~> 4.0.0.rc1'
+# After install: rails g simple_form:install
 gem 'simple_form'
 gem 'uglifier', '>= 1.3.0'
 gem 'validates_timeliness', '~> 3.0'

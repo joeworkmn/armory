@@ -17,10 +17,10 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: armory_development
+  database: armory
   pool: 5
-  username: armory
-  password:
+  username: joseph
+  password: batman
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -48,13 +48,13 @@ test:
   encoding: unicode
   database: armory_test
   pool: 5
-  username: armory
-  password:
+  username: joseph
+  password: batman
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: armory_production
+  database: armory
   pool: 5
-  username: armory
-  password:
+  username: joseph
+  password: batman
