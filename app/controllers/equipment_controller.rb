@@ -1,7 +1,15 @@
 class EquipmentController < ApplicationController
+
+   def index
+      @equipments = Equipment.all
+      gon.stats = Equipment::STATS
+   end
+
+
    def new
       @equipment = Equipment.new
    end
+
 
    def create
       @equipment = Equipment.new(equipment_params)

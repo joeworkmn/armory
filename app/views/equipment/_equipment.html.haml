@@ -1,0 +1,11 @@
+%tr
+  %td.num-html= equipment.name
+  %td.num-html= equipment.strength
+  %td.num-html= equipment.agility
+  %td.num-html= equipment.stamina
+  %td.num-html= equipment.intellect
+  %td.num-html= equipment.spirit
+  %td.num-html= equipment.attack_power
+  %td.num-html= equipment.critical
+  %td.num-html= equipment.dodge
+  %td= link_to "compare", "#", class: 'compare-link', data: { attrs: equipment.to_json } 

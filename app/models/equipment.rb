@@ -17,6 +17,14 @@
 #
 
 class Equipment < ActiveRecord::Base
+
+   STATS = ['strength', 'agility', 'stamina', 'intellect', 
+            'spirit', 'attack_power', 'critical', 'dodge']
+
+   STAT_LABELS = STATS.map(&:titleize)
+
+
+
    validates :name, presence: true
    validates_numericality_of :strength, :agility, :stamina, :intellect, 
                              :spirit, :attack_power, :critical, :dodge
