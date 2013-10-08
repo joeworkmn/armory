@@ -14,5 +14,6 @@
  *= require foundation_and_overrides
  *= require dataTables/src/demo_table_jui
  *= require dataTables.foundation
- *= require_tree .
+ *= require custom
+ * require_tree .
  */
