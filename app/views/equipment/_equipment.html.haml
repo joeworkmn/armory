@@ -8,4 +8,7 @@
   %td.num-html= equipment.attack_power
   %td.num-html= equipment.critical
   %td.num-html= equipment.dodge
-  %td= link_to "compare", "#", class: 'compare-link', data: { attrs: equipment.to_json } 
+  %td
+    = link_to("compare", "#", class: 'compare-link', data: { attrs: equipment.to_json }) + " | "
+    = link_to("edit", edit_equipment_path(equipment))
+       

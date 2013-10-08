@@ -22,6 +22,21 @@ class EquipmentController < ApplicationController
    end
 
 
+   def edit
+      equipment
+   end
+
+
+   def update
+      if equipment.update(equipment_params)
+         flash[:success] = "Item has been updated."
+         redirect_to edit_equipment_path
+      else
+         render :edit
+      end
+   end
+
+
 
 private
 
@@ -29,5 +44,10 @@ private
       params.require(:equipment)
             .permit(:name, :strength, :agility, :stamina, :intellect, 
                     :spirit, :attack_power, :critical, :dodge)
+   end
+
+
+   def equipment
+      @equipment ||= Equipment.find_by(id: params[:id])
    end
 end

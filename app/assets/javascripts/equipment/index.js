@@ -13,6 +13,10 @@ $(document).ready(function() {
          html += v + ": " + equipment[v] + "<br /> <br />"
       })
 
-      $(".first-item").html(html)
+      if ( $(".first-item").is(":empty") ) {
+         $(".first-item").html(html)
+      } else {
+         $(".second-item").html(html)
+      }
    })
 })
