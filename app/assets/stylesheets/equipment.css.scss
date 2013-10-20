@@ -1,8 +1,23 @@
 // Place all the styles related to the equipment controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'custom';
 
 .comparison-section {
    min-height: 320px;
-   border: 5px ridge #eaeaea;
+   border: 5px ridge $grayMediumLight;
+
+   .plus {
+      color: green;
+   }
+
+   .minus {
+      color: red;
+   }
+
+   .show-border {
+      border: 1px ridge black;
+   }
+
 }
+

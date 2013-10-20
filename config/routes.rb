@@ -1,4 +1,8 @@
 Armory::Application.routes.draw do
+
+   root to: 'equipment#index'
+
+
    resources :equipment
 
    get "test/datatables" => "test#datatables"

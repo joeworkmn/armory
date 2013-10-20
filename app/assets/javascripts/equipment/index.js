@@ -16,12 +16,23 @@ $(document).ready(function() {
       equipment = $(this).data("attrs")
       stats = gon.stats
 
-      html = "<h4>" + equipment.name + "</h4>"
 
-      $.each(stats, function(k, v) {
-         html += "<span class='" + v + "'>" + v + ": " + equipment[v] + "<span class='comparison'></span> </span> <br /> <br />"
+      // Build the HTML for the item
+      html = "<div class='row'>"
+      html += "<h4 class='large-12 columns'>" + equipment.name + "</h4>"
+      html += "</div>"
+      $.each(stats, function(k, stat) {
+         html += "<div class='row'>"
+
+         //html += "<span class='" + stat + "'><span class='comparison2'></span>" + stat + ": " + equipment[stat] + "<span class='comparison1'></span> </span> <br /> <br />"
+         html += "<div class='large-4 columns " + stat + " comparison-item2'></div>"
+         html += "<div class='large-4 columns " + stat + "'>" + stat + ": " + equipment[stat] + "</div>"
+         html += "<div class='large-2 columns end " + stat + " comparison-item1'></div>"
+
+         html += "</div> <br />"
       })
 
+      // Populate the comparison section
       if ( $(firstItem).is(":empty") ) {
          $(firstItem).html(html)
          $(firstItem).data("item", JSON.stringify(equipment))
@@ -31,17 +42,15 @@ $(document).ready(function() {
       }
 
 
+      // Calculate results.
       if (isReadyToCompare()) {
          item1 = JSON.parse(getComparedItem(firstItem))
          item2 = JSON.parse(getComparedItem(secondItem))
 
-         firstItemResult = item1.strength - item2.strength
-
-         secondItemResult = (firstItemResult > 0) ? "-" + firstItemResult : firstItemResult * -1
-
-         $(firstItem + " .strength .comparison").html(firstItemResult)
-         $(secondItem + " .strength .comparison").html(secondItemResult)
-
+         $.each(stats, function(k, s) {
+            result = item1[s] - item2[s]
+            setStatComparisonResult(s, result)
+         })
 
       }
    })
@@ -50,6 +59,36 @@ $(document).ready(function() {
 
 
 })
+
+function setStatComparisonResult(stat, result) {
+   //comparison1 = firstItem + " ." + stat + " .comparison1"
+   //comparison2 = secondItem + " ." + stat + " .comparison2"
+   comparison1 = firstItem + " ." + stat + ".comparison-item1"
+   comparison2 = secondItem + " ." + stat + ".comparison-item2"
+
+   if (result > 0) {
+      result1HTML = "+" + result
+      result2HTML = "-" + result
+
+      $(comparison1).removeClass("minus").addClass("plus")
+      $(comparison2).removeClass("plus").addClass("minus")
+   } else if (result < 0) {
+      result1HTML = result
+      result2HTML = result.toString().replace('-', '+')
+
+      $(comparison1).removeClass("plus").addClass("minus")
+      $(comparison2).removeClass("minus").addClass("plus")
+   } else {
+      $(comparison1).removeClass("plus minus")
+      $(comparison2).removeClass("plus minus")
+      result1HTML = "+0"
+      result2HTML = "+0"
+   }
+
+   $(comparison1).html(result1HTML)
+   $(comparison2).html(result2HTML)
+}
+
 
 function isReadyToCompare() {
    if ( $.trim(getComparedItem(firstItem)) != "" &&  $.trim(getComparedItem(secondItem)) != "" ) {
